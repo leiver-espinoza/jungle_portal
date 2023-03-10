@@ -10,28 +10,16 @@ form.addEventListener("submit", async function (event) {
   const confirmPassword = document.getElementById("confirm-password").value;
 
   user = {
+    token_owner: sessionStorage.getItem(token_owner),
+    token_value: sessionStorage.getItem(token_value),
     name_first: name_first,
     name_last: name_last,
     email: email,
     username: username,
     password: password,
   };
-  // Validar que los campos no estén vacíos y que las contraseñas coincidan
-  if (
-    !name_first ||
-    !name_last ||
-    !email ||
-    !username ||
-    !password ||
-    !confirmPassword ||
-    password !== confirmPassword
-  ) {
-    alert(
-      "Por favor, complete todos los campos y asegúrese de que las contraseñas coincidan."
-    );
-    return;
-  }
-
+  console.log(user)
+  
   fetch("https://api.toolsformyjob.com/users/create", {
     method: "POST",
     headers: {
@@ -39,15 +27,9 @@ form.addEventListener("submit", async function (event) {
     },
     body: JSON.stringify(user),
   })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error("Ha ocurrido un error al crear el usuario.");
-      }
-    })
-    .then((data) => {
-      console.log(data);
+    .then(response => response.json())
+    .then(response => {
+      console.log(response.data);
     })
     .catch((error) => {
       console.log(error);
