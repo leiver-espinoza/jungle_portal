@@ -17,6 +17,7 @@ form.addEventListener("submit", async function (event) {
     email: email,
     username: username,
     password: password,
+    enabled: true
   };
   console.log(user)
   
