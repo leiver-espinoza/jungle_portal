@@ -23,29 +23,17 @@ form.addEventListener("submit", function (event) {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => {
-      // Verificar el código de respuesta de la API
-      if (response.ok) {
-        // Si la respuesta es exitosa, extraer los datos de usuario
-        return response.json();
-      } else {
-        // Si la respuesta es un error, lanzar una excepción
-        throw new Error("Credenciales inválidas");
-      }
-    })
+    .then((response) => response.json())
     .then((data) => {
       // Si se encontró el usuario, mostrar un mensaje de bienvenida
-
-      const jsonData = JSON.stringify(data);
-      sessionStorage.setItem("apiData", jsonData);
-      //--------------------------------------------------------------
-      /*const token = jsonData;
-      const user_owner = user.username;
-      console.log("Token: ", token); // ver el json con el token en la consola
-      console.log("user_owner: ", user_owner);*/ // ver el token_owner en la consola
+      const token_value = JSON.stringify(data.data[0].Token);
+      const token_owner = user.username
+      sessionStorage.setItem("token_value", token_value);
+      sessionStorage.setItem("token_owner", token_owner);
       window.location.assign("/Users/html/create.html");
     })
     .catch((error) => {
+      alert(error)
       // Si ocurrió un error, mostrar un mensaje de error
       //console.error(error);
       window.location.assign("error.html");
