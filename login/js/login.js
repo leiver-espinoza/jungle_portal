@@ -23,7 +23,7 @@ form.addEventListener("submit", function (event) {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => response.json())
+    .then((response))
     .then((apiData) => {
       // Si se encontró el usuario, mostrar un mensaje de bienvenida
       const token_value = apiData.data[0].Token;
