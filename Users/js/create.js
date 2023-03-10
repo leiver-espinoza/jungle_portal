@@ -10,8 +10,8 @@ form.addEventListener("submit", async function (event) {
   const confirmPassword = document.getElementById("confirm-password").value;
 
   user = {
-    token_owner: sessionStorage.getItem(token_owner),
-    token_value: sessionStorage.getItem(token_value),
+    token_owner: sessionStorage.getItem("token_owner"),
+    token_value: sessionStorage.getItem("token_value"),
     name_first: name_first,
     name_last: name_last,
     email: email,
