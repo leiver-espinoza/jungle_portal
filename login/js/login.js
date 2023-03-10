@@ -24,9 +24,9 @@ form.addEventListener("submit", function (event) {
     },
   })
     .then((response) => response.json())
-    .then((data) => {
+    .then((apiData) => {
       // Si se encontró el usuario, mostrar un mensaje de bienvenida
-      const token_value = JSON.stringify(data.data[0].Token);
+      const token_value = apiData.data[0].Token.value;
       const token_owner = user.username
       sessionStorage.setItem("token_value", token_value);
       sessionStorage.setItem("token_owner", token_owner);
