@@ -23,17 +23,17 @@ form.addEventListener("submit", function (event) {
       "Content-Type": "application/json",
     },
   })
-    .then(response => response.json())
-    .then(response => {
+    .then((response) => response.json())
+    .then((response) => {
       // Si se encontró el usuario, mostrar un mensaje de bienvenida
       const token_value = response.data[0].Token;
-      const token_owner = user.username
+      const token_owner = user.username;
       sessionStorage.setItem("token_value", token_value);
       sessionStorage.setItem("token_owner", token_owner);
-      window.location.assign("/Users/html/create.html");
+      window.location.assign("/index.html");
     })
     .catch((error) => {
-      alert(error)
+      alert(error);
       // Si ocurrió un error, mostrar un mensaje de error
       //console.error(error);
       window.location.assign("error.html");

@@ -6,8 +6,6 @@ form.addEventListener("submit", async function (event) {
   const name_last = document.getElementById("name_last").value;
   const email = document.getElementById("email").value;
   const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirm-password").value;
 
   user = {
     token_owner: sessionStorage.getItem("token_owner"),
@@ -16,21 +14,20 @@ form.addEventListener("submit", async function (event) {
     name_last: name_last,
     email: email,
     username: username,
-    password: password,
-    enabled: true
+    enabled: true,
   };
-  console.log(user)
-  
-  fetch("https://api.toolsformyjob.com/users/create", {
-    method: "POST",
+  console.log(user);
+
+  fetch("https://api.toolsformyjob.com/users/read_all", {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(user),
   })
-    .then(response => response.json())
-    .then(response => {
-      console.log(response.data);
+    .then((response) => response.json())
+    .then((response) => {
+      //console.log(response.data);
+      printData.innerHTML = response.data;
     })
     .catch((error) => {
       console.log(error);
