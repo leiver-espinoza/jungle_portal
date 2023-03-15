@@ -11,7 +11,21 @@ form.addEventListener("submit", async function (event) {
   };
   console.log(user);
 
-  const url = "https://api.toolsformyjob.com/users/delete";
+  const url =
+    "https://api.toolsformyjob.com/users/delete?param_token_owner=" +
+    user.param_token_owner +
+    "&param_token_value=" +
+    user.param_token_value +
+    "&param_id=" +
+    user.param_id;
+
+  fetch(url, {
+    method: "DELETE",
+  })
+    .then((response) => response.json())
+    .then((response) => console.log("Elimino correctamente"))
+    .catch((err) => console.log(err));
+  /*const url = "https://api.toolsformyjob.com/users/delete";
 
   const options = {
     method: "DELETE",
@@ -25,4 +39,21 @@ form.addEventListener("submit", async function (event) {
     .then((response) => response.json())
     .then((response) => console.log(response.data))
     .catch((err) => console.log(err));
+  */
 });
+
+/*const url =
+  "https://api.toolsformyjob.com/users/read?param_token_owner=" +
+  user.param_token_owner +
+  "&param_token_value=" +
+  user.param_token_value +
+  "&param_id=" +
+  user.param_id;
+
+fetch(url, {
+  method: "GET",
+})
+  .then((response) => response.json())
+  .then((response) => console.log(response.data))
+  .catch((err) => console.log(err));
+*/
