@@ -12,7 +12,7 @@ form.addEventListener("submit", async function (event) {
   user = {
     token_owner: sessionStorage.getItem("token_owner"),
     token_value: sessionStorage.getItem("token_value"),
-    id: parseint(id),
+    id: parseInt(id),
     name_first: name_first,
     name_last: name_last,
     email: email,
