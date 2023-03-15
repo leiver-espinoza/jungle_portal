@@ -7,7 +7,7 @@ form.addEventListener("submit", async function (event) {
   user = {
     param_token_owner: sessionStorage.getItem("token_owner"),
     param_token_value: sessionStorage.getItem("token_value"),
-    param_id: id,
+    param_id: parseInt(id),
   };
   console.log(user);
 
