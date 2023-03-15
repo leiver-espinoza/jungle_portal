@@ -18,18 +18,26 @@ form.addEventListener("submit", async function (event) {
   };
   console.log(user);
 
-  fetch("https://api.toolsformyjob.com/users/read_all", {
+  const url =
+    "https://api.toolsformyjob.com/users/read_all?param_token_owner=" +
+    user.param_token_owner +
+    "&param_token_value=" +
+    user.param_token_value +
+    "&name_first=" +
+    user.name_first +
+    "&name_last=" +
+    user.name_last +
+    "&email=" +
+    user.email +
+    "&username=" +
+    user.username +
+    "&enabled=" +
+    user.enabled;
+
+  fetch(url, {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
   })
     .then((response) => response.json())
-    .then((response) => {
-      //console.log(response.data);
-      printData.innerHTML = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    .then((response) => console.log(response.data))
+    .catch((err) => console.log(err));
 });
