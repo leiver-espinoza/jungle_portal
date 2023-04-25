@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/font.css">
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/login.css">
+</head>
+<body>
+  <div class="Login">
+
+    <div class="logo">
+      <img src="../assets/images/logo.png">
+      <span class="logoName">Jungle</span>
+    </div>
+
+    <div class="alertModal" id="alertModal">
+      <div class="alertError">
+        <img src="../assets/icons/formAlert.svg" class="errorIcon">
+        <span class="errorTitle" id="errorTitle"></span>
+        <button class="errorButton" id="errorButton">Ok</button>
+      </div>
+    </div>
+
+    <div class="formHeader">
+      <span class="headerTitle">Sign In</span>
+      <span class="headerSubtitle">Sign in and start monitoring your resources!</span>
+    </div>
+
+    <form class="loginForm" id="loginForm">
+      <div class="inputComponent" id="component_username">
+        <label for="username" class="label">Username</label>
+        <input type="text" name="username" id="username" class="input" autocomplete="off" spellcheck="false" placeholder="Elon">
+        <span class="formError" id="formError"><img src="../assets/icons/form-error.svg"></span>
+      </div>
+      <div class="inputComponent" id="component_password">
+        <label for="password" class="label">Password</label>
+        <input type="password" name="password" id="password" class="input" autocomplete="off" spellcheck="false" placeholder="••••••••">
+        <span class="formError" id="formError"><img src="../assets/icons/form-error.svg"></span>
+      </div>
+      <button type="submit" class="loginButton">Login</button>
+    </form>
+  </div>
+
+  <script src="../js/login.js"></script>
+</body>
+</html>

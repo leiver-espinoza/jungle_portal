@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../../styles/reset.css">
+  <link rel="stylesheet" href="../../styles/font.css">
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="Dashboard">
+    <div class="Sidebar">
+      <div class="sidebarTitle">
+        <img src="../../assets/images/logo.png" alt="">
+        <span>Jungle</span>
+      </div>
+      <nav class="sidebarNav" id="sidebarNav">
+        <a href="../dashboard/dashboard.html" class="sidebarLink onPage nS">
+          <div class="linkButton">
+            <img src="../../assets/icons/chart-bar.svg" class="linkIcon">
+            <span class="linkTitle">Dashboard</span>
+          </div>
+        </a>
+        <a href="../dashboard/client.html" class="sidebarLink nS">
+          <div class="linkButton">
+            <img src="../../assets/icons/users.svg" class="linkIcon">
+            <span class="linkTitle">Clients</span>
+          </div>
+        </a>
+
+        <div class="navActiveClients">
+          <span class="navSectionTitle">Active clients</span>
+          <div class="activeClients" id="activeClients"></div>
+        </div>
+      </nav>
+    </div>
+    <div class="Page">
+      <div class="Header">
+        <!-- User statistics -->
+      </div>
+      <div class="PageContent">
+        <div class="stats section">
+          <div class="statsHeader">
+            <span class="sectionTitle">Basic stats</span>
+            <span class="updateTime">Last 30 minutes</span>
+          </div>
+          <div class="statsContent">
+            <div class="statBox">
+              <span class="statTitle">Configured clients</span>
+              <span class="statNumber" id="cfg-cli"></span>
+            </div>
+            <div class="statBox">
+              <span class="statTitle">Active clients</span>
+              <span class="statNumber" id="act-cli"></span>
+            </div>
+            <div class="statBox">
+              <span class="statTitle">Windows clients</span>
+              <span class="statNumber" id="win-cli"></span>
+            </div>
+            <div class="statBox">
+              <span class="statTitle" ">Linux clients</span>
+              <span class=" statNumber" id="lin-cli"></span>
+            </div>
+            <div class="statBox">
+              <span class="statTitle">Inactive clients</span>
+              <span class="statNumber" id="inac-cli"></span>
+            </div>
+            <div class="statBox">
+              <span class="statTitle">Clients with alerts</span>
+              <span class="statNumber" id="alert-cli"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="taskList">
+          <div class="task">
+            <div class="taskHeader nS">
+              <div class="taskTitle">CPU</div>
+              <img src="../../assets/icons/chevron-down.svg" class="icon">
+            </div>
+            <div class="taskData">
+              <div class="cpuContainer">
+                <div class="cpuData">
+                  <div class="dataHeader">
+                    <div class="dataBox">
+                      <span class="dataTitle">CPUs</span>
+                      <span class="dataNumber" id="cpu-count"></span>
+                    </div>
+                    <div class="dataBox">
+                      <span class="dataTitle">Min. Frequency mhz</span>
+                      <span class="dataNumber" id="min-freq"></span>
+                    </div>
+                    <div class="dataBox">
+                      <span class="dataTitle">Current Frequency</span>
+                      <span class="dataNumber" id="curr-freq"></span>
+                    </div>
+                    <div class="dataBox">
+                      <span class="dataTitle">Max. Frequency</span>
+                      <span class="dataNumber" id="max-freq"></span>
+                    </div>
+                  </div>
+                  <div class="chart-container" style="height:300px; width:600px">
+                    <canvas id="cpu-chart" responsive="true"></canvas>
+                  </div>
+                </div>
+                <div class="battery_os">
+                  <span class="dataTitle">Battery - OS</span>
+                  <div class="dataBox">
+                    <span class="dataOS">Operating system: <span class="data" id="OS">Windows</span></span>
+                    <span class="dataBattery">Battery percent: <span class="data" id="battery-porcent">90%</span></span>
+                    <span class="dataBatteryConection">Battery conected: <span class="data"
+                        id="battery-conection"></span></span>
+                  </div>
+                  <div class="chart-container" style="height: 100%;">
+                    <canvas id="battery-chart" responsive="true"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="task">
+            <div class="taskHeader nS">
+              <div class="taskTitle">Memory</div>
+              <span id="memoryData"></span>
+              <img src="../../assets/icons/chevron-down.svg" class="icon">
+            </div>
+            <div class="taskData">
+              <div class="memoryContainer">
+                <table class="table">
+                  <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>16 GB</td>
+                  </tr>
+                  <tr>
+                    <td>Available</td>
+                    <td>1 GB</td>
+                  </tr>
+                  <tr>
+                    <td>Used</td>
+                    <td>15 GB</td>
+                  </tr>
+                  <tr>
+                    <td>Free</td>
+                    <td>1 GB</td>
+                  </tr>
+                  <tr>
+                    <td>Perc. used</td>
+                    <td>99%</td>
+                  </tr>
+                </table>
+                <div class="chart-container" style="height:300px; width:600px">
+                  <canvas id="memory-chart" responsive="true"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="task active">
+            <div class="taskHeader nS">
+              <div class="taskTitle">Main disk</div>
+              <img src="../../assets/icons/chevron-down.svg" class="icon">
+            </div>
+            <div class="taskData">
+              <div class="diskContainer">
+                <div class="dataContainer">
+                  <div class="dataBox">
+                    <span class="dataTitle">Read count</span>
+                    <span class="dataNumber">168217</span>
+                  </div>
+                  <div class="dataBox">
+                    <span class="dataTitle">Read Bytes</span>
+                    <span class="dataNumber">168217</span>
+                  </div>
+                  <div class="dataBox">
+                    <span class="dataTitle">Read Time</span>
+                    <span class="dataNumber">168217</span>
+                  </div>
+                  <div class="dataBox">
+                    <span class="dataTitle">Write Count</span>
+                    <span class="dataNumber">168217</span>
+                  </div>
+                  <div class="dataBox">
+                    <span class="dataTitle">Write Bytes</span>
+                    <span class="dataNumber">168217</span>
+                  </div>
+                  <div class="dataBox">
+                    <span class="dataTitle">Write Time</span>
+                    <span class="dataNumber">168217</span>
+                  </div>
+                </div>
+                <div class="chart-container" style="height:300px; width:600px">
+                  <canvas id="disk-chart" responsive="true"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="task">
+            <div class="taskHeader nS">
+              <div class="taskTitle">Disk 0</div>
+              <img src="../../assets/icons/chevron-down.svg" class="icon">
+            </div>
+            <div class="taskData">
+              <div class="chart-container" style="height:300px; width:300px">
+                <canvas id="disk0"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../js/dashboard_cpu.js"></script>
+    <script src="../../js/charts/grapich_cpu.js"></script>
+    <script src="../../js/charts/chartBattery.js"></script>
+    <script src="../../js/charts/grapich_memory.js"></script>
+    <script src="../../js/charts/grapich_disk.js"></script>
+    <script src="../../js/sidepanel.js"></script>
+    <script src="../../js/stats.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+
+</html>

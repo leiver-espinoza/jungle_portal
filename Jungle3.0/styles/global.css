@@ -1,0 +1,38 @@
+:root {
+  /* Font Size */
+  --caption: 0.75rem;
+  --body: 0.938rem;
+  --subtitle: 1.125rem;
+  --headline1: 1.25rem;
+  --headline2: 1.5rem;
+  --headline3: 2.25rem;
+  --headline4: 3.375rem;
+  --headline5: 4.875rem;
+  --mainColor: #149F81;
+  --mainBackgroundColor: var(--color-shade-30);
+  --mainTextColor: #ffffff;
+  --color-border: hsl(212, 23%, 18%);
+  --color-input-label: hsl(213, 20%, 58%);
+  --color-input-border: hsl(212, 23%, 22%);
+  --color-input-placeholder: hsl(212, 23%, 28%);
+  --color-shade: #161c23;
+  --color-shade-10: #141920;
+  --color-shade-20: #12161c;
+  --color-shade-30: #0d1115;
+}
+
+* {
+  font-family: Poppins;
+  font-weight: 400;
+}
+
+body {
+  background: var(--mainBackgroundColor);
+  color: var(--mainTextColor);
+}
+
+input {
+  background: inherit;
+  border: none;
+  width: auto;
+}

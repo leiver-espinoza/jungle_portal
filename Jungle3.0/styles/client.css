@@ -1,0 +1,283 @@
+.Client {
+  display: grid;
+  grid-template-columns: 275px 1fr;
+  grid-template-areas: "sidebar content";
+  font-family: Poppins;
+  font-weight: 400;
+  width: 100%;
+  height: 100vh;
+}
+
+.Sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-shade);
+  box-shadow: inset -1px 0 var(--color-border);
+  height: 100vh;
+}
+.Sidebar .sidebarTitle {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  box-shadow: inset 0 -1px var(--color-border);
+  font-size: var(--headline2);
+  font-weight: 600;
+  padding: 20px;
+  width: 100%;
+}
+.Sidebar .sidebarTitle img {
+  width: 40px;
+  height: 40px;
+}
+.Sidebar .sidebarTitle span {
+  color: var(--mainColor);
+  font-size: var(--headline1);
+  font-weight: 700;
+}
+.Sidebar .sidebarNav {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  padding: 0 20px;
+  padding-top: 20px;
+  height: 100%;
+}
+.Sidebar .sidebarNav .sidebarLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 7px;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.Sidebar .sidebarNav .sidebarLink.onPage {
+  background-color: var(--color-shade-20);
+}
+.Sidebar .sidebarNav .sidebarLink .linkButton {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 0.938rem;
+  line-height: normal;
+  padding: 10px;
+  width: 100%;
+}
+.Sidebar .sidebarNav .sidebarLink .linkButton:hover {
+  background-color: var(--color-border);
+}
+.Sidebar .sidebarNav .sidebarLink .linkButton .linkIcon {
+  margin-right: 10px;
+  width: 22px;
+  height: 22px;
+}
+
+.Page {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+.Page .Header {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-shade);
+  box-shadow: inset 0 -1px var(--color-border);
+  font-size: var(--headline2);
+  font-weight: 600;
+  padding: 0 20px;
+  width: 100%;
+  min-height: 80px;
+}
+.Page .PageContent {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+}
+
+.clientTable {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 100%;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-shade);
+  border-radius: 10px;
+}
+.accordion.active .accordionHeader .icon {
+  transition: transform 0.2s ease-in-out;
+  transform: rotate(180deg);
+}
+.accordion.active .accordionData {
+  display: flex;
+}
+.accordion .accordionHeader {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+}
+.accordion .accordionHeader .tableTitle {
+  font-size: var(--headline1);
+  font-weight: 500;
+}
+.accordion .accordionHeader .icon {
+  transition: transform 0.2s ease-in-out;
+  width: 22px;
+  height: 22px;
+}
+.accordion .accordionHeader:hover {
+  cursor: pointer;
+}
+.accordion .accordionData {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+}
+.table tr:nth-child(even) {
+  background-color: var(--color-border);
+}
+.table tr:first-child {
+  background: transparent;
+}
+.table tr:last-child {
+  box-shadow: none;
+}
+.table th {
+  color: #a2a4a7;
+  font-size: var(--caption);
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 0.2px;
+  padding: 10px 0;
+  padding-bottom: 20px;
+}
+.table th:first-child {
+  padding-left: 20px;
+}
+.table th:last-child {
+  padding-right: 20px;
+}
+.table td {
+  font-size: var(--body);
+  letter-spacing: 0.2px;
+  padding: 20px 0;
+}
+.table td:hover {
+  cursor: pointer;
+}
+.table td:first-child {
+  padding-left: 20px;
+}
+.table td:last-child {
+  padding-right: 20px;
+}
+
+.indicatorTable {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  background-color: var(--color-shade);
+  border-radius: 10px;
+  width: 100%;
+}
+.indicatorTable.active .tableHeader .icon {
+  transition: transform 0.2s ease-in-out;
+  transform: rotate(180deg);
+}
+.indicatorTable.active .accordionData {
+  display: flex;
+}
+
+.tableHeader {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+}
+.tableHeader .tableTitle {
+  font-size: var(--headline1);
+  font-weight: 500;
+}
+.tableHeader .icon {
+  transition: transform 0.2s ease-in-out;
+  width: 22px;
+  height: 22px;
+}
+.tableHeader:hover {
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+}
+.table tr:nth-child(even) {
+  background-color: var(--color-border);
+}
+.table tr:first-child {
+  background: transparent;
+}
+.table tr:last-child {
+  box-shadow: none;
+}
+.table th {
+  color: #a2a4a7;
+  font-size: var(--caption);
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 0.2px;
+  padding: 10px 0;
+  padding-bottom: 20px;
+}
+.table th:first-child {
+  padding-left: 20px;
+}
+.table th:last-child {
+  padding-right: 20px;
+}
+.table td {
+  font-size: var(--body);
+  letter-spacing: 0.2px;
+  padding: 20px 0;
+}
+.table td:hover {
+  cursor: pointer;
+}
+.table td:first-child {
+  padding-left: 20px;
+}
+.table td:last-child {
+  padding-right: 20px;
+}
+.table td.error {
+  color: hsl(355, 100%, 74%);
+}
+.table td.warn {
+  color: hsl(51, 100%, 74%);
+}
+.table td.success {
+  color: hsl(135, 100%, 74%);
+}
+.table td.pending {
+  color: hsl(209, 100%, 74%);
+}
