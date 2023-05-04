@@ -211,3 +211,18 @@
   width: 300px;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 }
+
+#clients_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row; /* changed from default "column" */
+}
+
+.client_container {
+  width: 30%;
+  flex-direction: column;
+  text-align: center;
+  background-color: #dddddd00;
+  height: 100px;
+}

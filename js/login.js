@@ -1,3 +1,5 @@
+console.warn = () => {};
+
 const loginForm = document.getElementById('loginForm');
 const inputs = document.querySelectorAll('#loginForm input');
 
@@ -31,7 +33,6 @@ const validInput = (expression, input, target, hasError) => {
 
 inputs.forEach((input) => {
   input.addEventListener('keyup', validForm)
-  //input.addEventListener('blur', validForm)
 })
 
 loginForm.addEventListener('submit', (e) => {
@@ -46,41 +47,55 @@ loginForm.addEventListener('submit', (e) => {
   };
 
   if (!username || !password) {
-    alert("Por favor ingresa tu usuario y contraseña");
+    Swal.fire({
+      title: 'Missing data!',
+      icon: 'error',
+      html: 'Please enter your username and password',
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+      },
+    })
     return;
   }
 
-  fetch("https://api.toolsformyjob.com/users/login", {
-    method: "POST",
-    body: JSON.stringify(user),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-  .then(response => {
-    if (response.status === 200) {
-      return response.json();
-    } else if (response.status === 403) {
-      return response.json()
-    }
-  })
-  .then(data => {
-    if (data.detail) {
-      document.getElementById('alertModal').classList.add('active');
-      document.getElementById('errorTitle').innerHTML = data.detail
-    } else {
-      const token_value = data.data[0].Token;
-      const token_owner = user.username;
-      sessionStorage.setItem("token_value", token_value);
-      sessionStorage.setItem("token_owner", token_owner);
-      window.location.assign("./dashboard/dashboard.html");
-    }
-  })
-  .catch(err => console.log(err))
-})
+  try {
+    fetch("https://api.toolsformyjob.com/users/login", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then(response => {
+      if (response.status === 200) {
+        return response.json();
+      } else if (response.status === 403) {
+        return response.json()
+      }
+    })
+    .then(data => {
+      if (data.detail) {
+        Swal.fire({
+          title: 'Error!',
+          icon: 'error',
+          html: data.detail,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+          }
+        })
+      } else {
+        const token_value = data.data[0].Token;
+        const token_owner = user.username;
+        sessionStorage.setItem("token_value", token_value);
+        sessionStorage.setItem("token_owner", token_owner);
+        window.location.assign("./dashboard/dashboard.html");
+      }
+    })
+    .catch(e);  }
+  catch(e) {}
 
-const errorButton = document.getElementById('errorButton');
-
-errorButton.addEventListener('click', () => {
-  document.getElementById('alertModal').classList.remove('active');
 })

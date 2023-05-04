@@ -409,7 +409,7 @@
   -moz-column-gap: 20px;
        column-gap: 20px;
   margin: auto 0;
-  width: 30%;
+  width: 50%;
 }
 .diskContainer .dataContainer .dataBox {
   display: flex;
